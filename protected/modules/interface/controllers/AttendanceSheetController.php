@@ -350,9 +350,6 @@ class AttendanceSheetController extends Controller
 			'flex' => 1,
 			'values' => array(
 			),
-			/*'filter' => array(array("xtype" => "textfield",
-					'filterName' => "l.name",
-			)),*/
 		);
 		
 		$fields[] = array(
@@ -373,9 +370,6 @@ class AttendanceSheetController extends Controller
 			'width' => 0,
 			'values' => array(
 			),
-			/*'filter' => array(array("xtype" => "textfield",
-			 'filterName' => "l.name",
-			)),*/
 		);
 		
 		$fields[] = array(
@@ -416,9 +410,6 @@ class AttendanceSheetController extends Controller
 			'width' => 0,
 			'values' => array(
 			),
-			/*'filter' => array(array("xtype" => "textfield",
-			 'filterName' => "l.name",
-			)),*/
 		);
 		
 		$fields[] = array(
@@ -439,9 +430,6 @@ class AttendanceSheetController extends Controller
 			'flex' => 1,
 			'values' => array(
 			),
-			/*'filter' => array(array("xtype" => "textfield",
-			 'filterName' => "l.name",
-			)),*/
 		);
 		
 		$fields[] = array(
