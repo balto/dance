@@ -1,0 +1,64 @@
+table.expander_table{
+    margin: 0 0 0 50px;
+    border: 2px solid #f1f1f1;
+    font: normal 11px/15px tahoma,arial,verdana,sans-serif;
+    width: 400px;
+}
+
+table.expander_table thead{
+    background-color: #D3E1F1;
+}
+
+table.expander_table thead th{
+    text-align: center;
+    /*font-weight: bold;*/
+}
+
+table.expander_table tbody tr td:first-child{
+    /*font-weight: bold;*/
+}
+
+table.expander_table tbody tr:nth-child(even){
+    background-color: #f1f1f1;
+}
+
+table.expander_table tbody tr:nth-child(odd){
+    background-color: #fff;
+}
+
+table.expander_table td{
+    text-align: center;
+    padding: 5;
+}
+
+div.field_description{
+	font-style: italic;
+	width: 100%;
+	opacity: 0.3;
+}
+
+div.field_description span{
+	float: right;
+}
+
+span.campaign_type_fail{
+	color : red;
+}
+
+span.campaign_type_success{
+	color : green;
+}
+
+span.ticket_payed{
+	color : green;
+}
+
+span.ticket_not_payed{
+	color : red;
+}
+
+div.pay_in_member_name{
+	text-align: center;
+	
+}
+

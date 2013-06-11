@@ -1,0 +1,36 @@
+.grid-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+}
+
+.grid-action, .icon-remove-alt {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.x-grid-row.soft-deleted .x-grid-cell{
+    background-color: #EDD !important;
+    text-decoration:line-through;
+}
+
+.storno-voucher > td { background:#EDD !important; }
+
+.x-grid-table .x-grid-row-summary {
+    font-size: 11px;
+    background: #DDD;
+}
+
+.x-grid-table .x-grid-row-summary .x-grid-cell-inner {
+    border-top: 1px solid #888;
+}
+
+.x-grid-cell .summary {
+    font-weight: bold;
+}
+
+.print-page .x-item-disabled .x-form-field {
+    opacity: .9;
+}

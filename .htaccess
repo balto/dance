@@ -1,0 +1,14 @@
+Options +FollowSymLinks +ExecCGI
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # we skip all files with .something
+  
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+
+  # no, so we redirect to our front web controller
+  RewriteRule . index_dev.php [QSA,L]
+</IfModule>

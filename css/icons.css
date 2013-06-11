@@ -1,0 +1,781 @@
+/*  
+// Icon Classes */
+.icon-none {
+    background: none ! important;
+}
+.icon-cursor {
+    cursor: pointer;
+}
+.icon-page {
+    background: no-repeat url(../images/icons/page.png) ! important;
+}
+.icon-page-excel {
+    background: no-repeat url(../images/icons/page_excel.png) ! important;
+}
+.icon-page-white {
+    background: no-repeat url(../images/icons/page_white.png) ! important;
+}
+.icon-page-white-copy {
+    background: no-repeat url(../images/icons/page_white_copy.png) ! important;
+}
+.icon-page-white-magnify {
+    background: no-repeat url(../images/icons/page_white_magnify.png) ! important;
+}
+.icon-page-white-text {
+    background: no-repeat url(../images/icons/page_white_text.png) ! important;
+}
+.icon-door-in{
+    background: no-repeat url(../images/icons/door_in.png) ! important;
+}
+.icon-shape-square {
+    background: no-repeat url(../images/icons/shape_square.png) ! important;
+}
+.icon-shape-square-edit {
+    background: no-repeat url(../images/icons/shape_square_edit.png) ! important;
+}
+.icon-shape-square-go {
+    background: no-repeat url(../images/icons/shape_square_go.png) ! important;
+}
+.icon-shape-handles {
+    background: no-repeat url(../images/icons/shape_handles.png) ! important;
+}
+.icon-timeline-marker {
+    background: no-repeat url(../images/icons/timeline_marker.png) ! important;
+}
+.icon-rosette {
+	background: no-repeat url(../images/icons/rosette.png) 50% 0 ! important;
+}
+.icon-rosette-off {
+    opacity: 0.2;
+    filter:alpha(opacity=20);   
+    background: no-repeat url(../images/icons/rosette.png) 50% 0 ! important;
+}
+.icon-accept {
+    background: no-repeat url(../images/icons/accept.png) ! important;
+}
+.icon-tag-yellow {
+    background: no-repeat url(../images/icons/tag_yellow.png) ! important;
+}
+.icon-ruby {
+    background: no-repeat url(../images/icons/ruby.png) ! important;
+}
+.icon-ruby-add {
+    background: no-repeat url(../images/icons/ruby_add.png) ! important;
+}
+.icon-ruby-gear {
+    background: no-repeat url(../images/icons/ruby_gear.png) ! important;
+}
+.icon-ruby-delete {
+    background: no-repeat url(../images/icons/ruby_delete.png) ! important;
+}
+.icon-ruby-get {
+    background: no-repeat url(../images/icons/ruby_get.png) ! important;
+}
+.icon-ruby-go {
+    background: no-repeat url(../images/icons/ruby_go.png) ! important;
+}
+.icon-ruby-key {
+    background: no-repeat url(../images/icons/ruby_key.png) ! important;
+}
+.icon-ruby-link {
+    background: no-repeat url(../images/icons/ruby_link.png) ! important;
+}
+.icon-ruby-put {
+    background: no-repeat url(../images/icons/ruby_put.png) ! important;
+}
+.icon-calendar {
+    background: no-repeat url(../images/icons/calendar.png) ! important;
+}
+.icon-calendar-add {
+    background: no-repeat url(../images/icons/calendar_add.png) ! important;
+}
+.icon-calendar-delete {
+    background: no-repeat url(../images/icons/calendar_delete.png) ! important;
+}
+.icon-calendar-edit {
+    background: no-repeat url(../images/icons/calendar_edit.png) ! important;
+}
+.icon-calendar-link {
+    background: no-repeat url(../images/icons/calendar_link.png) ! important;
+}
+.icon-calendar-view-day {
+    background: no-repeat url(../images/icons/calendar_view_day.png) ! important;
+}
+.icon-calendar-view-month {
+    background: no-repeat url(../images/icons/calendar_view_month.png) ! important;
+}
+.icon-calendar-view-year {
+    background: no-repeat url(../images/icons/calendar_view_year.png) ! important;
+}
+.icon-status-online {
+    background: no-repeat url(../images/icons/status_online.png) ! important;
+}
+.icon-building {
+    background: no-repeat url(../images/icons/building.png) ! important;
+}
+.icon-building-go {
+    background: no-repeat url(../images/icons/building_go.png) ! important;
+}
+
+.icon-building-edit {
+    background: no-repeat url(../images/icons/building_edit.png) ! important;
+}
+.icon-ob {
+	background: no-repeat url(../images/icons/ob_16.png) ! important;
+}
+.icon-graph {
+	background: no-repeat url(../images/icons/chart_curve.png) ! important;
+}
+.icon-chart {
+	background: no-repeat url(../images/icons/chart_bar.png) ! important;
+}
+
+.icon-later {
+	background: no-repeat url(../images/icons/hourglass.png) ! important;
+}
+
+.icon-prefs {
+	background: no-repeat url(../images/icons/application_form.png) ! important;
+}
+.icon-ok {
+	background: no-repeat url(../images/icons/ok16.png) ! important;
+}
+.icon-view-tile {
+	background: no-repeat url(../images/icons/application_view_tile.png) ! important;
+}
+.icon-check, .icon-check-off {
+	background: no-repeat url(../ext/resources/images/default/menu/unchecked.gif) ! important;
+}
+.icon-check-on {
+	background: no-repeat url(../ext/resources/images/default/menu/checked.gif) ! important;
+}
+.icon-stat-data {
+	background: no-repeat url(../images/icons/kate_16.png) ! important;
+}
+.icon-rename {
+	background: no-repeat url(../images/icons/textfield_rename.png) ! important;
+}
+
+.icon-save {
+	background: no-repeat url(../images/icons/disk.png) ! important;
+}
+
+.icon-add-col {
+	background: no-repeat url(../images/icons/page_white_add.png) ! important;
+}
+.icon-del-col {
+	background: no-repeat url(../images/icons/page_white_delete.png) ! important;
+}
+.icon-save-table {
+	background: no-repeat url(../images/icons/table_save.png) ! important;
+}
+.icon-add-tab {
+	background: no-repeat url(../images/icons/tab_add.png) ! important;
+}
+.icon-del-tab {
+	background: no-repeat url(../images/icons/tab_delete.png) ! important;
+}
+.icon-go-tab {
+	background: no-repeat url(../images/icons/tab_go.png) ! important;
+}
+.icon-add-table {
+	background: no-repeat url(../images/icons/table_add.png) ! important;
+}
+.icon-del-table {
+	background: no-repeat url(../images/icons/table_delete.png) ! important;
+}
+.icon-admin {
+	background: no-repeat url(../images/icons/adv_settings_16.png) ! important;
+}
+.icon-grid {
+    background: no-repeat url(../images/icons/application_view_columns.png) !important;
+}
+.icon-view-list {
+    background: no-repeat url(../images/icons/application_view_list.png) !important;
+}
+.icon-key {
+	background: no-repeat url(../images/icons/key.png) ! important;
+}
+.icon-key2 {
+	background: no-repeat url(../images/icons/key_16.png) ! important;
+}
+.icon-expand-all {
+	background: no-repeat url(../images/icons/expand-all.gif) ! important;
+}
+.icon-collapse-all {
+	background: no-repeat url(../images/icons/collapse-all.gif) ! important;
+}
+.icon-tree-orgboard {
+	background: no-repeat url(../images/icons/chart_organisation.png) ! important;
+}
+.icon-tree-area {
+	background: no-repeat url(../images/icons/post_title.png) ! important;
+}
+.icon-tree-post {
+	background: no-repeat url(../images/icons/page_white.png) ! important;
+}
+.icon-add {
+	background: no-repeat url(../images/icons/add.png) ! important;
+}
+.icon-remove {
+	background: no-repeat url(../images/icons/cross.png) ! important;
+}
+.icon-remove-alt{
+	background: no-repeat url(../images/icons/cross.png) ! important;
+}
+.icon-house {
+	background: no-repeat url(../images/icons/house.png) ! important;
+}
+.icon-user {
+    background: no-repeat url(../images/icons/user.png) ! important;
+}
+.icon-group {
+    background: no-repeat url(../images/icons/group.png) ! important;
+}
+.icon-user-add {
+    background: no-repeat url(../images/icons/user_add.png) ! important;
+}
+.icon-user-delete {
+    background: no-repeat url(../images/icons/user_delete.png) ! important;
+}
+.icon-user-edit {
+    background: no-repeat url(../images/icons/user_edit.png) ! important;
+}
+.icon-user-go {
+    background: no-repeat url(../images/icons/user_go.png) ! important;
+}
+.icon-user-comment {
+    background: no-repeat url(../images/icons/user_comment.png) ! important;
+}
+.icon-trash-empty {
+	background: no-repeat url(../images/icons/bin_empty.png) ! important;
+}
+.icon-trash-closed {
+	background: no-repeat url(../images/icons/bin_closed.png) ! important;
+}
+.icon-disk {
+	background: no-repeat url(../images/icons/disk.png) ! important;
+}
+.icon-disk-bullet {
+	background: no-repeat url(../images/icons/bullet_disk.png) ! important;
+}
+.icon-bullet-go {
+    background: no-repeat url(../images/icons/bullet_go.png) ! important;
+}
+.icon-bullet-red {
+    background: no-repeat url(../images/icons/bullet_red.png) ! important;
+}
+.icon-bullet-green {
+    background: no-repeat url(../images/icons/bullet_green.png) ! important;
+}
+.icon-bullet-blue {
+    background: no-repeat url(../images/icons/bullet_blue.png) ! important;
+}
+.icon-undo {
+	background: no-repeat url(../images/icons/arrow_undo.png) ! important;
+}
+.icon-loading {
+	background: no-repeat url(../ext/resources/images/default/grid/grid-loading.gif) ! important;
+}
+.icon-db {
+	background: no-repeat url(../images/icons/database.png) ! important;
+}
+.icon-db-refresh {
+	background: no-repeat url(../images/icons/database_refresh.png) ! important;
+}
+.icon-db-gear {
+	background: no-repeat url(../images/icons/database_gear.png) ! important;
+}
+.icon-magnifier {
+	background: no-repeat url(../images/icons/magnifier.png) ! important;
+}
+.icon-wrench {
+	background: no-repeat url(../images/icons/wrench.png) ! important;
+}
+.icon-wrench-orange {
+	background: no-repeat url(../images/icons/wrench_orange.png) ! important;
+}
+.icon-star {
+	background: no-repeat url(../images/icons/star.png) ! important;
+}
+.icon-star-half {
+	background: no-repeat url(../images/icons/star_half.png) ! important;
+}
+.icon-lock-go {
+    background: no-repeat url(../images/icons/lock_go.png) ! important;
+}
+.icon-lock-delete {
+    background: no-repeat url(../images/icons/lock_delete.png) ! important;
+}
+.icon-group-add {
+	background: no-repeat url(../images/icons/group_add.png) ! important;
+}
+.icon-group-del {
+	background: no-repeat url(../images/icons/group_delete.png) ! important;
+}
+.icon-stat-portal {
+	background: no-repeat url(../images/icons/stat_portal_16.png) ! important;
+}
+.icon-stat-list {
+	background: no-repeat url(../images/icons/stat_list_16.png) ! important;
+}
+.icon-cancel {
+	background: no-repeat url(../images/icons/cancel16.png) ! important;
+}
+
+.icon-cancel1 {
+	background: no-repeat url(../images/icons/cancel.png) ! important;
+}
+
+.icon-cross {
+	background: no-repeat url(../images/icons/cross.png) ! important;
+}
+.icon-defaults {
+	background: no-repeat url(../images/icons/arrow_rotate_clockwise.png) ! important;
+}
+.icon-load {
+	background: no-repeat url(../images/icons/database_go.png) ! important;
+}
+.icon-reconfigure {
+	background: no-repeat url(../images/icons/database_gear.png) ! important;
+}
+.icon-working {
+	background: no-repeat url(../ext/resources/images/default/grid/wait.gif) ! important;
+}
+.icon-upload {
+	background: no-repeat url(../images/icons/up.png) ! important;
+}
+.icon-folder-add {
+	background: no-repeat url(../images/icons/folder_add.png) ! important;
+}
+.icon-folder-page-white {
+    background: no-repeat url(../images/icons/folder_page_white.png) ! important;
+}
+.icon-open {
+	background: no-repeat url(../images/icons/application_go.png) ! important;
+}
+.icon-open-self {
+	background: no-repeat url(../images/icons/application.png) ! important;
+}
+.icon-open-popup {
+	background: no-repeat url(../images/icons/application_double.png) ! important;
+}
+.icon-open-blank {
+	background: no-repeat url(../images/icons/application_cascade.png) ! important;
+}
+.icon-open-download {
+	background: no-repeat url(../images/icons/application_put.png) ! important;
+}
+.icon-refresh {
+	background: no-repeat url(../images/icons/arrow_refresh.png) ! important;
+}
+.icon-arrow-branch {
+    background: no-repeat url(../images/icons/arrow_branch.png) ! important;
+}
+.icon-arrow-divide {
+    background: no-repeat url(../images/icons/arrow_divide.png) ! important;
+}
+.icon-arrow-down {
+    background: no-repeat url(../images/icons/arrow_down.png) ! important;
+}
+.icon-arrow-in {
+    background: no-repeat url(../images/icons/arrow_in.png) ! important;
+}
+.icon-arrow-inout {
+    background: no-repeat url(../images/icons/arrow_inout.png) ! important;
+}
+.icon-arrow-join {
+    background: no-repeat url(../images/icons/arrow_join.png) ! important;
+}
+.icon-arrow-left {
+    background: no-repeat url(../images/icons/arrow_left.png) ! important;
+}
+.icon-arrow-merge {
+    background: no-repeat url(../images/icons/arrow_merge.png) ! important;
+}
+.icon-arrow-out {
+    background: no-repeat url(../images/icons/arrow_out.png) ! important;
+}
+.icon-arrow-redo {
+    background: no-repeat url(../images/icons/arrow_redo.png) ! important;
+}
+.icon-arrow-refresh {
+    background: no-repeat url(../images/icons/arrow_refresh.png) ! important;
+}
+.icon-arrow-refresh-small {
+    background: no-repeat url(../images/icons/arrow_refresh_small.png) ! important;
+}
+.icon-arrow-right {
+    background: no-repeat url(../images/icons/arrow_right.png) ! important;
+}
+.icon-arrow-rotate-anticlockwise {
+    background: no-repeat url(../images/icons/arrow_rotate_anticlockwise.png) ! important;
+}
+.icon-arrow-rotate-clockwise {
+    background: no-repeat url(../images/icons/arrow_rotate_clockwise.png) ! important;
+}
+.icon-arrow-switch {
+    background: no-repeat url(../images/icons/arrow_switch.png) ! important;
+}
+.icon-arrow-turn-left {
+    background: no-repeat url(../images/icons/arrow_turn_left.png) ! important;
+}
+.icon-arrow-turn-right {
+    background: no-repeat url(../images/icons/arrow_turn_right.png) ! important;
+}
+.icon-arrow-turn-right-down {
+    background: no-repeat url(../images/icons/arrow_turn_right_down.png) ! important;
+}
+.icon-arrow-undo {
+    background: no-repeat url(../images/icons/arrow_undo.png) ! important;
+}
+.icon-arrow-up {
+    background: no-repeat url(../images/icons/arrow_up.png) ! important;
+}
+.icon-pencil {
+	background: no-repeat url(../images/icons/pencil.png) ! important;
+}
+.icon-pencil-add {
+    background: no-repeat url(../images/icons/pencil_add.png) ! important;
+}
+.icon-stop {
+	background: no-repeat url(../images/icons/control_stop.png) ! important;
+}
+.icon-email {
+	background: no-repeat url(../images/icons/email.png) ! important;
+}
+.icon-email-add {
+	background: no-repeat url(../images/icons/email_add.png) ! important;
+}
+.icon-email-compose {
+	background: no-repeat url(../images/icons/email_edit.png) ! important;
+}
+.icon-coins {
+	background: no-repeat url(../images/icons/coins.png) ! important;
+}
+.icon-clock {
+	background: no-repeat url(../images/icons/clock.png) ! important;
+}
+.icon-zoom {
+	background: no-repeat url(../images/icons/zoom.png) ! important;
+}
+.icon-printer {
+	background: no-repeat url(../images/icons/printer.png) ! important;
+}
+.icon-printer-add {
+    background: no-repeat url(../images/icons/printer_add.png) ! important;
+}
+.icon-print, .icon-print-all {
+    background: no-repeat url(../images/icons/printer.png) ! important;
+}
+.icon-folder-component {
+	background: no-repeat url(../images/icons/folder_brick.png) ! important;
+}
+.icon-plugin {
+	background: no-repeat url(../images/icons/plugin.png) ! important;
+}
+.icon-extension {
+	background: no-repeat url(../images/icons/brick.png) ! important;
+}
+.icon-function {
+	background: no-repeat url(../images/icons/flag_yellow.png) ! important;
+}
+.icon-flag-blue {
+	background: no-repeat url(../images/icons/flag_blue.png) ! important;
+}
+.icon-flag-red {
+    background: no-repeat url(../images/icons/flag_red.png) ! important;
+}
+.icon-bulb {
+	background: no-repeat url(../images/icons/lightbulb.png) 50% 0 ! important;
+}
+.icon-bulb-off {
+	background: no-repeat url(../images/icons/lightbulb_off.png) 50% 0 ! important;
+}
+.icon-copy {
+	background: no-repeat url(../images/icons/page_white_copy.png) ! important;
+}
+.icon-clone {
+    background: no-repeat url(../images/icons/page_copy.png) ! important;
+}
+.icon-edit-record {
+	background: no-repeat url(../images/icons/table_edit.png) ! important;
+}
+.icon-edit-button {
+	background: url(../images/icons/table_edit.png) center center no-repeat! important;
+}
+.icon-actions {
+	background: no-repeat url(../images/icons/lightning.png) ! important;
+}
+.icon-form-add {
+	background: no-repeat url(../images/icons/layout_add.png) ! important;
+}
+.icon-html {
+	background: no-repeat url(../images/icons/html.png) ! important;
+}
+.icon-note {
+    background: no-repeat url(../images/icons/note.png) ! important;
+}
+.icon-note-add {
+    background: no-repeat url(../images/icons/note_add.png) ! important;
+}
+.icon-note-delete {
+    background: no-repeat url(../images/icons/note_delete.png) ! important;
+}
+.icon-note-edit {
+    background: no-repeat url(../images/icons/note_edit.png) ! important;
+}
+.icon-page-edit {
+    background: no-repeat url(../images/icons/page_edit.png) ! important;
+}
+.icon-note-error {
+    background: no-repeat url(../images/icons/note_error.png) ! important;
+}
+.icon-note-go {
+    background: no-repeat url(../images/icons/note_go.png) ! important;
+}
+.icon-script {
+	background: no-repeat url(../images/icons/script.png) ! important;
+}
+.icon-script-add {
+    background: no-repeat url(../images/icons/script_add.png) ! important;
+}
+.icon-script-delete {
+    background: no-repeat url(../images/icons/script_delete.png) ! important;
+}
+.icon-script-edit {
+    background: no-repeat url(../images/icons/script_edit.png) ! important;
+}
+.icon-script-error {
+    background: no-repeat url(../images/icons/script_error.png) ! important;
+}
+.icon-script-go {
+    background: no-repeat url(../images/icons/script_go.png) ! important;
+}
+.icon-script-gear {
+    background: no-repeat url(../images/icons/script_gear.png) ! important;
+}
+.icon-script-key {
+    background: no-repeat url(../images/icons/script_key.png) ! important;
+}
+.icon-script-save {
+    background: no-repeat url(../images/icons/script_save.png) ! important;
+}
+.icon-php {
+	background: no-repeat url(../images/icons/script_code.png) ! important;
+}
+.icon-css {
+	background: no-repeat url(../images/icons/css.png) ! important;
+}
+.icon-run {
+	background: no-repeat url(../images/icons/application_go.png) ! important;
+}
+.icon-information {
+	background: no-repeat url(../images/icons/information.png) ! important;
+}
+.icon-wages {
+	background: no-repeat url(../images/icons/euro_16.png) ! important;
+}
+.icon-calculator {
+	background: no-repeat url(../images/icons/calculator.png) ! important;
+}
+.icon-add-wage {
+	background: no-repeat url(../images/icons/coins_add.png) ! important;
+}
+.icon-del-wage {
+	background: no-repeat url(../images/icons/bin_closed.png) ! important;
+}
+.icon-history {
+	background: no-repeat url(../images/icons/book_open.png) ! important;
+}
+.icon-lock {
+	background: no-repeat url(../images/icons/lock.png) ! important;
+}
+.icon-lock-open {
+	background: no-repeat url(../images/icons/lock_open.png) ! important;
+}
+.icon-lock-small-open {
+    background: no-repeat url(../images/icons/lock_small_open.png) ! important;
+}
+.icon-lock-small-close {
+    background: no-repeat url(../images/icons/lock_small_close.png) ! important;
+}
+.icon-shield{
+    background: no-repeat url(../images/icons/shield.png) ! important;
+}
+.icon-shield-add{
+    background: no-repeat url(../images/icons/shield_add.png) ! important;
+}
+.icon-shield-go{
+    background: no-repeat url(../images/icons/shield_go.png) ! important;
+}
+.icon-shield-delete{
+    background: no-repeat url(../images/icons/shield_delete.png) ! important;
+}
+.icon-calculator{
+    background: no-repeat url(../images/icons/calculator.png) ! important;
+}
+.icon-error {
+    background: no-repeat url(../images/icons/error.png) ! important;
+}
+.icon-bricks {
+    background: no-repeat url(../images/icons/bricks.png) ! important;
+}
+.icon-cog {
+    background: no-repeat url(../images/icons/cog.png) ! important;
+}
+.icon-folder-find {
+    background: no-repeat url(../images/icons/folder_find.png) ! important;
+}
+.icon-money {
+    background: no-repeat url(../images/icons/money.png) ! important;
+}
+.icon-money_add {
+    background: no-repeat url(../images/icons/money_add.png) ! important;
+}
+.icon-money_delete {
+    background: no-repeat url(../images/icons/money_delete.png) ! important;
+}
+.icon-money-euro {
+	background: no-repeat url(../images/icons/money_euro.png) ! important;
+}
+.icon-eye {
+    background: no-repeat url(../images/icons/eye.png) ! important;
+}
+.icon-sign-plus {
+    background: no-repeat url(../images/icons/sign_plus.png) ! important;
+}
+.icon-sign-minus {
+    background: no-repeat url(../images/icons/sign_minus.png) ! important;
+}
+.icon-database-edit {
+    background: no-repeat url(../images/icons/database_edit.png) ! important;
+}
+.icon-folder-database {
+    background: no-repeat url(../images/icons/folder_database.png) ! important;
+}
+.icon-map {
+    background: no-repeat url(../images/icons/map.png) ! important;
+}
+.icon-monitor {
+    background: no-repeat url(../images/icons/monitor.png) ! important;
+}
+.icon-page-white-c {
+    background: no-repeat url(../images/icons/page_white_c.png) ! important;
+}
+.icon-map {
+    background: no-repeat url(../images/icons/map.png) ! important;
+}
+.icon-asterisk-orange {
+	background: no-repeat url(../images/icons/asterisk_orange.png) ! important;
+}
+.icon-computer {
+	background: no-repeat url(../images/icons/computer.png) ! important;
+}
+.icon-gauge {
+	background: no-repeat url(../images/icons/gauge.png) ! important;
+}
+.icon-page-white-c {
+    background: no-repeat url(../images/icons/page_white_c.png) ! important;
+}
+.icon-map {
+    background: no-repeat url(../images/icons/map.png) ! important;
+}
+.icon-asterisk-orange {
+	background: no-repeat url(../images/icons/asterisk_orange.png) ! important;
+}
+.icon-computer {
+	background: no-repeat url(../images/icons/computer.png) ! important;
+}
+.icon-gauge {
+	background: no-repeat url(../images/icons/gauge.png) ! important;
+}
+.icon-tag-green {
+	background: no-repeat url(../images/icons/tag_green.png) ! important;
+}
+.icon-report {
+    background: no-repeat url(../images/icons/report.png) ! important;
+}
+.icon-report-edit {
+    background: no-repeat url(../images/icons/report_edit.png) ! important;
+}
+.icon-report-user {
+    background: no-repeat url(../images/icons/report_user.png) ! important;
+}
+.icon-form-edit {
+    background: no-repeat url(../images/icons/application_form_edit.png) ! important;
+}
+
+.sitemap-color {
+	background: no-repeat url(../images/icons/sitemap_color.png) ! important;
+}
+
+.pictures {
+	background: no-repeat url(../images/icons/pictures.png) ! important;
+}
+
+.link_break {
+	background: no-repeat url(../images/icons/link_break.png) ! important;
+}
+
+.icon-sankey-arrow-straight {
+    background: no-repeat url(../images/icons/sankey_arrow_straight.png) ! important;
+}
+.icon-sankey-arrow-rcurve {
+    background: no-repeat url(../images/icons/sankey_arrow_rcurve.png) ! important;
+}
+.icon-sankey-arrow-lcurve {
+    background: no-repeat url(../images/icons/sankey_arrow_lcurve.png) ! important;
+}
+.icon-male {
+    background: no-repeat url(../images/icons/male.png) ! important;
+}
+.icon-female {
+    background: no-repeat url(../images/icons/female.png) ! important;
+}
+.icon-exclamation {
+    background: no-repeat url(../images/icons/exclamation.png) ! important;
+}
+.icon-tick{
+    background: no-repeat url(../images/icons/tick.png) ! important;
+}
+.icon-hat{
+    background: no-repeat url(../images/icons/hat.png) ! important;
+}
+.icon-question{
+    background: no-repeat url(../images/icons/question.png) ! important;
+}
+.icon-xtra{
+    background: no-repeat url(../images/icons/xtra.png) ! important;
+}
+.icon-rci{
+    background: no-repeat url(../images/icons/RCI.png) ! important;
+}
+.icon-dice{
+    background: no-repeat url(../images/icons/dice.png) ! important;
+}
+.icon-sum{
+    background: no-repeat url(../images/icons/sum.png) ! important;
+}
+.icon-text-align-justify{
+    background: no-repeat url(../images/icons/text_align_justify.png) ! important;
+}
+.icon-table{
+    background: no-repeat url(../images/icons/table.png) ! important;
+}
+.icon-table-multiple{
+    background: no-repeat url(../images/icons/table_multiple.png) ! important;
+}
+.icon-vcard{
+    background: no-repeat url(../images/icons/vcard.png) ! important;
+}
+
+.icon-layout{
+    background: no-repeat url(../images/icons/layout.png) ! important;
+}
+.icon-layout-content{
+    background: no-repeat url(../images/icons/layout_content.png) ! important;
+}
+
+/*  Icon Classes end */
+
