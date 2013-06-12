@@ -51,6 +51,9 @@ $mdl->createMethod("addMember()");
 $mdl->createMethod("showMemberInfo()");
 
 $mdl->createMethod("openPayIn(grid, record, action, row, col)");
+
+$mdl->createMethod("selectTicketType(combo, record)");
+
 // models and stores ______________________________________
 
 
@@ -327,6 +330,10 @@ $mdl->attendanceSheetmainContainer->add(
 				->valueField('id')
 				->allowBlank(false)
 				->anchor("100%")
+				->listeners(array(
+					'select'=> $mdl->selectTicketType,
+					'scope' => new ExtCodeFragment('this'),
+				))
 			)
 			->add(Ext::NumberField($ticketForm->generateName('price'))
 		    	->value('')
@@ -542,6 +549,7 @@ $mdl->addTicket->begin(); ?>
                 	    campaignMemberGrid.getStore().load();
 
                 	    Ext.getCmp('<?php echo Ext::w($ticketForm->generateName('member_id'))->id ?>').reset();
+                	    Ext.getCmp('<?php echo Ext::w($ticketForm->generateName('payed_price'))->id ?>').reset();
         			}
 
     				
@@ -626,6 +634,29 @@ $mdl->openPayIn->begin() //(grid, record, action, row, col) ?>
 <?php $mdl->openPayIn->end();
 
 
+$mdl->selectTicketType->begin() //(combo, record) ?>
+	var defPrice = record[0].data.default_price;
+	var validDays = record[0].data.valid_days;
+	var price = Ext.getCmp('<?php echo Ext::w($ticketForm->generateName('price'))->id ?>');
+	var activeFrom = Ext.getCmp('<?php echo Ext::w($ticketForm->generateName('active_from'))->id ?>');
+	var activeTo = Ext.getCmp('<?php echo Ext::w($ticketForm->generateName('active_to'))->id ?>');
+
+	if(defPrice!=null){
+		price.setValue(defPrice);
+	}
+
+	var today = new Date();
+	var fromDate = Ext.Date.format(today, 'Y-m-d H:00:00');
+	activeFrom.setValue(fromDate);
+	
+	if(validDays!=null){
+		var toDate = new Date();
+		toDate.setDate(today.getDate()+parseInt(validDays));
+
+		activeTo.setValue(Ext.Date.format(toDate, 'Y-m-d H:00:00'));
+	}
+	
+<?php $mdl->selectTicketType->end();
 // template methods _______________________________________
 
 

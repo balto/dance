@@ -258,6 +258,21 @@ class Controller extends CController
         return $location_search;
     }
 
+    public function isSetFilter($filter_name){
+
+    	if($this->hasParameter('filter')){
+    		$filter_post = json_decode($_POST['filter'], true);
+    		print_r($filter_post); exit;
+    		foreach ($filter_post AS $filter){
+    			if($filter['property'] == $filter_name){
+    				return $filter['value'];
+    			}
+    		}
+    	}
+    	
+    	return false;
+    }
+    
     public function addFilter($name, $value, $like = true){
         $filter = array();
         if($this->hasParameter('filter')){

@@ -78,6 +78,16 @@ class AttendanceSheetController extends Controller
 			'gridColumn' => false,
 			'width' => 0,
 		);
+		
+		$fields[] = array(
+			'name' => 'default_price',
+			'type' => '',
+			'header' => 'Alapár',
+			'xtype' => '',
+			'sortDir' => '',
+			'gridColumn' => false,
+			'width' => 0,
+		);
 	
 		return $fields;
 	}

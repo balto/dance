@@ -345,10 +345,11 @@ public function campaignTypelistFieldDefinitions($show_is_free = false, $is_free
 		$form = new $form_name();
 		//print_r($record); exit;
 		$data = array(
-				$form->generateName('id') => $record->id,
-				$form->generateName('moment_count') => $record->moment_count,	
-				$form->generateName('is_daily') => $record->is_daily,
-				$form->generateName('valid_days') => $record->valid_days,
+			$form->generateName('id') => $record->id,
+			$form->generateName('moment_count') => $record->moment_count,	
+			$form->generateName('is_daily') => $record->is_daily,
+			$form->generateName('valid_days') => $record->valid_days,
+			$form->generateName('default_price') => $record->default_price,
 		);
 
 		$this->renderText(json_encode(array('success'=>true, 'data'=>$data)));

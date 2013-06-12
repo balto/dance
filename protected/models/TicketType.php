@@ -8,6 +8,7 @@
  * @property integer $moment_count
  * @property integer $is_daily
  * @property integer $valid_days
+ * @property integer $default_price
  * @property integer $created_by
  * @property string $created_at
  * @property integer $updated_by
@@ -46,11 +47,11 @@ class TicketType extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created_by, created_at', 'required'),
-			array('moment_count, valid_days, created_by, updated_by', 'numerical', 'integerOnly'=>true),
+			array('moment_count, valid_days, default_price, created_by, updated_by', 'numerical', 'integerOnly'=>true),
 			array('updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, moment_count, is_daily, valid_days, created_by, created_at, updated_by, updated_at', 'safe', 'on'=>'search'),
+			array('id, moment_count, is_daily, valid_days, default_price, created_by, created_at, updated_by, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +78,7 @@ class TicketType extends CActiveRecord
 			'moment_count' => Yii::t('msg', 'Bérlet alkalmak száma'),
 			'is_daily' => Yii::t('msg', 'Napi jegy'),
 			'valid_days' => Yii::t('msg', 'Érvényes (nap)'),
+			'default_price' => Yii::t('msg', 'Alapár'),
 			'created_by' => 'Created By',
 			'created_at' => 'Created At',
 			'updated_by' => 'Updated By',
@@ -99,6 +101,7 @@ class TicketType extends CActiveRecord
 		$criteria->compare('moment_count',$this->moment_count);
 		$criteria->compare('is_daily',$this->is_daily);
 		$criteria->compare('valid_days',$this->valid_days);
+		$criteria->compare('default_price',$this->default_price);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_by',$this->updated_by);

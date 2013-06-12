@@ -246,7 +246,7 @@ class MemberController extends Controller
 				'values' => array(
 				),
 				'filter' => array(array("xtype" => "textfield",
-						'filterName' => "sex",
+					'filterName' => "sex",
 				)),
 		);
 	
@@ -404,7 +404,7 @@ class MemberController extends Controller
 	 * Visszaadja az adott member meglevo kampany tipusait
 	 */
 	public function actionGetDoneCampaignTypeList()
-	{
+	{		
 		$extra_params = array();
 		$this->addPagerParams($extra_params);
 		$this->addOrderParams($extra_params);
@@ -419,6 +419,13 @@ class MemberController extends Controller
 
     public function actionGetList()
     {
+    	/*$sex_filter = $this->isSetFilter("sex");
+    	
+    	if($sex_filter){
+    		$this->unsetFilterGet("sex");
+    		$this->addFilter("sex", $value);
+    	}
+    	*/
         $extra_params = array();
         $this->addPagerParams($extra_params);
         $this->addOrderParams($extra_params);

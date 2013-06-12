@@ -9,6 +9,7 @@ class TicketTypeForm extends EFormModel
 	public $moment_count;
 	public $is_daily; 
 	public $valid_days;
+	public $default_price;
 
 	protected $name_format = 'TicketType';
 

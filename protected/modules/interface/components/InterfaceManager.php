@@ -51,7 +51,7 @@ class InterfaceManager extends BaseModelManager
         }
         
         $query_params = array(
-        		array('select', 'tt.id, dt.name AS dance_type_name, ct.name AS campaign_type_name, tt.moment_count, tt.valid_days, ttct.is_main, ttct.is_free'),
+        		array('select', 'tt.id, dt.name AS dance_type_name, ct.name AS campaign_type_name, tt.moment_count, tt.default_price, tt.valid_days, ttct.is_main, ttct.is_free'),
         		array('from', TicketTypeCampaignType::model()->tableName().' ttct'),
         		array('join', array(CampaignType::model()->tableName() . ' ct', 'ct.id = ttct.campaign_type_id')),
         		array('join', array(TicketType::model()->tableName() . ' tt', 'tt.id = ttct.ticket_type_id')),
@@ -65,8 +65,14 @@ class InterfaceManager extends BaseModelManager
         
         foreach ($ticketRows['data'] AS $ticketRow){
         	$display_name = $ticketRow['campaign_type_name']." (".$ticketRow['dance_type_name'].") ". $ticketRow['moment_count']." alkalmas";
+        	
+        	if ($ticketRow['default_price']){
+        		$display_name.=' | '.$ticketRow['default_price'].' Ft';
+        	}
+        	
         	$tickets[$ticketRow['id']]['data'][] = array('display_name' => $display_name, 'is_main' => $ticketRow['is_main'], 'is_free' => $ticketRow['is_free']);
         	$tickets[$ticketRow['id']]['valid_days'] = $ticketRow['valid_days'];
+        	$tickets[$ticketRow['id']]['default_price'] = $ticketRow['default_price'];
         }
         
         $result['totalCount'] = count($tickets);
@@ -79,7 +85,7 @@ class InterfaceManager extends BaseModelManager
 				}
 			}
 			
-        	$result['data'][] = array('id' => $ticket_id, 'name' => implode(', ', $forimplode), 'valid_days' => $data['valid_days']);
+        	$result['data'][] = array('id' => $ticket_id, 'name' => implode(', ', $forimplode), 'valid_days' => $data['valid_days'], 'default_price' => $data['default_price']);
         }
         
         return $result;

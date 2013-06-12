@@ -85,6 +85,13 @@ $dlg->TicketTypeForm
     	->value('')
     	->allowBlank(true)
     )
+    
+    ->add(Ext::NumberField($form->generateName('default_price'))
+    	->fieldLabel($form->getLabel('default_price'))
+    	->value('')
+    	->minValue(0)
+    	->allowBlank(true)
+    )
 
     /*
     ->add(Ext::TextField($form->generateName('is_daily'))
