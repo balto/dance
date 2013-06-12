@@ -291,7 +291,7 @@ this.window.setDisabled(true);
 
 var me = this,
     form = Ext.getCmp('<?php echo $dlg->CampaignTypeForm->id ?>');
-form.getForm().reset();
+
 
 var requiredCampaignTypeGrid = Ext.getCmp('<?php echo $dlg->Grid->id ?>');
 requiredCampaignTypeGrid.updateHeader();
@@ -323,6 +323,7 @@ if (this.params.id) {
 	});
 
 } else {
+	Ext.Function.defer(function(f){f.getForm().reset();}, 300, this, [form]);
     me.window.setDisabled(false);
 }
 
