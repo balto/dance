@@ -56,7 +56,30 @@ class CampaignManager extends BaseModelManager
 
         $query_params = array_merge($query_params, $extra_params);
 
-        return DBManager::getInstance()->query($query_params);
+        $results = DBManager::getInstance()->query($query_params);
+        
+        foreach ($results['data'] AS &$data){
+        	$reqctExpls = array();
+        	$reqctExpls = explode(', ', $data['required_campaign_types']);
+        	$reqctTemp = array();
+        	
+        	foreach ($reqctExpls as $reqct) {
+        		$reqctTemp[$reqct] = null;
+        	}
+        	
+        	$ctmExpls = array();
+        	$ctmExpls = explode(', ', $data['campaign_type_moments']);
+        	$ctmTemp = array();
+        	 
+        	foreach ($ctmExpls as $ctm) {
+        		$ctmTemp[$ctm] = null;
+        	}
+        	
+        	$data['required_campaign_types'] = implode(', ', array_keys($reqctTemp));
+        	$data['campaign_type_moments'] = implode(', ', array_keys($ctmTemp));
+        }
+        
+        return $results;
     }
 
     /**
