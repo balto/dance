@@ -26,6 +26,7 @@ $dlg->createStore("GridPStore")
 	->proxy(Ext::Proxy()
 		->url("campaign/campaignType/getCampaignTypeList", $this)
 		->reader(Ext::JsonReader())
+		->extraParams(array('isCtPermissionShow' => 1))
 	)
 ;
 

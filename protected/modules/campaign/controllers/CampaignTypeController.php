@@ -249,13 +249,14 @@ class CampaignTypeController extends Controller
 	public function actionGetCampaignTypeList()
 	{
 		$isCombo = $this->getParameter('isCombo', false, false);
+		$isCtPermissionShow = $this->getParameter('isCtPermissionShow', 0, false);
 		
 		$extra_params = array();
 		$this->addPagerParams($extra_params);
 		$this->addOrderParams($extra_params);
 		$this->addFilterParams($extra_params);
 	
-		$response = CampaignManager::getInstance()->getCampaignTypes($extra_params, $isCombo);
+		$response = CampaignManager::getInstance()->getCampaignTypes($extra_params, $isCombo, $isCtPermissionShow);
 	
 		$this->renderText(json_encode($response));
 	}

@@ -21,16 +21,19 @@ class CampaignManager extends BaseModelManager
      * @param unknown_type $extra_params
      * @param unknown_type $isCombo
      */
-    public function getCampaignTypes($extra_params = array(), $isCombo = false)
+    public function getCampaignTypes($extra_params = array(), $isCombo = false, $isCtPermissionShow = false)
     {
     	$selectArray = array(
     		'ct.id',
     		'ct.name',
     		'dt.name' => 'dance_type_name',
     		'COALESCE(GROUP_CONCAT(CONCAT(dt2.name," ",ct2.name) SEPARATOR ", "), "...nincs kötelező kampány típus") as required_campaign_types',
-			'COALESCE(GROUP_CONCAT(CONCAT(ctd.moment_count,"/",ctd.required_moment_count) SEPARATOR ", "), "...nincs felvéve alkalom") as campaign_type_moments',
-    	    	
+			'COALESCE(GROUP_CONCAT(CONCAT(ctd.moment_count,"/",ctd.required_moment_count) SEPARATOR ", "), "...nincs felvéve alkalom") as campaign_type_moments',	
 		);
+    	
+    	if ($isCtPermissionShow) {
+    		$selectArray[] = '"1" AS is_free';
+    	}
     	
     	if ($isCombo) {
     		$selectArray = array(	

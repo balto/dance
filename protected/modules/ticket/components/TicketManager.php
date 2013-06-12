@@ -143,7 +143,21 @@ class TicketManager extends BaseModelManager
 			foreach ($permissionedCampaignTypes AS $pctData){
 				$tempData = explode(',', $pctData);
 				$pctId = $tempData[0];
-				$is_free = !isset($tempData[1]) || $tempData[1] == 'false' || $tempData[1] == '' ? 0 : 1 ;
+				
+				if(is_bool($tempData[1])){
+					$is_free = $tempData[1] ? 1 : 0 ;
+				}
+				else{
+					if($tempData[1] == 'false'){
+						$is_free = 0;
+					}
+					elseif ($tempData[1] == 'true'){
+						$is_free = 1;
+					}
+					else{
+						$is_free = $tempData[1];
+					}
+				}
 				
 				$ctr = new TicketTypeCampaignType();
 				$ctr->ticket_type_id = $response['id'];

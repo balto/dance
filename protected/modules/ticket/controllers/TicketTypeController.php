@@ -208,7 +208,7 @@ public function campaignTypelistFieldDefinitions($show_is_free = false, $is_free
 				'defaultValue' => '',
 				'resizable' => '',
 				'align' => 'right',
-				'renderer' => '',
+				//'renderer' => '',
 				//'renderer' => 'function(value,c,record){return value=="1" ? "igen":"nem" ;}',
 				'groupable' => false,
 				'gridColumn' => true,
@@ -219,12 +219,14 @@ public function campaignTypelistFieldDefinitions($show_is_free = false, $is_free
 
 			if($is_free_check){
 				$temp['editor'] = array(
-					'xtype' => 'checkboxfield'
+					'xtype' => 'checkboxfield',
+					'uncheckedValue' => "0",
+					'inputValue' => "1",
 				);
 			}
-			else{
-				$temp['renderer'] = 'function(value,c,record){return value=="1" ? "igen":"nem" ;}';
-			}
+			//else{
+				$temp['renderer'] = 'function(value,c,record){return (value=="1" || value=="true" || value=="on") ? "igen":"nem" ;}';
+			//}
 
 			$fields[] = $temp;
 		}
