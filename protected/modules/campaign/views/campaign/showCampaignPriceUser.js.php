@@ -168,7 +168,7 @@ if (this.params.id) {
 	});
 }
 else{
-	Ext.Function.defer(function(f){f.getForm().reset();}, 400, this, [form]);
+	Ext.Function.defer(function(f){Ext.getCmp('<?php echo Ext::w($form->generateName('user_id'))->id ?>').reset();}, 400, this);
     me.window.setDisabled(false);
 }
 
