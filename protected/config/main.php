@@ -105,10 +105,10 @@ return array(
         */
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=127.0.0.1;dbname=hotel2',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=admin_aapro',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'vargabal',
+			'username' => 'aadmin',
+			'password' => '20SoniR77011',
 			'charset' => 'utf8',
 		    //'schemaCachingDuration' => 3600,
 		    'class' => 'EDbConnection',
