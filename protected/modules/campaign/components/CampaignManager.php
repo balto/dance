@@ -1440,7 +1440,7 @@ class CampaignManager extends BaseModelManager
 		
 		$user = User::model()->findByPk($data['user_id']);
 		
-		if(empty($parent_id) && $data['id']){
+		if($data['id']){
 			$edit = true;
 		}
 		
