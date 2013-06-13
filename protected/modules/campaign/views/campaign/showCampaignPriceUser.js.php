@@ -144,7 +144,6 @@ this.window.setDisabled(true);
 
 var me = this,
     form = Ext.getCmp('<?php echo $dlg->CampaignPriceUserForm->id ?>');
-form.getForm().reset();
 
 if(this.params.parent_id){
 	Ext.getCmp('<?php echo Ext::w($form->generateName('tree_parent_id'))->id ?>').setValue(this.params.parent_id);
@@ -169,6 +168,7 @@ if (this.params.id) {
 	});
 }
 else{
+	Ext.Function.defer(function(f){f.getForm().reset();}, 400, this, [form]);
     me.window.setDisabled(false);
 }
 

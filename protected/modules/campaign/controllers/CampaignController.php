@@ -370,6 +370,12 @@ class CampaignController extends Controller
 		$this->renderText(json_encode($response));
 	}
 	
+	public function actionGetPriceRulesSablonList(){
+		$response = CampaignManager::getInstance()->getPriceRulesSablonList();
+		
+		$this->renderText(json_encode($response));
+	}
+	
 	public function actionShowCampaignPriceRules()
 	{
 		$campaignId = $this->getParameter('id');
@@ -379,10 +385,13 @@ class CampaignController extends Controller
 	
 		CampaignManager::getInstance()->startPriceRulesForCampaign($campaignId);
 	
+		$form = new PriceRulesSablonForm();
+		
 		$this->render('/campaign/showCampaignPriceRules.js', array(
 				'max_per_page' => $max_per_page,
 				'combo_max_per_page' => $combo_max_per_page,
 				'campaignId' => $campaignId,
+				'form' => $form,
 		));
 	}
 	
@@ -501,6 +510,26 @@ class CampaignController extends Controller
 		$cpr->deleteNode();
 		
 		$this->renderText(json_encode(array('success' => true, 'error'=>0)));
+	}
+	
+	public function actionSavePriceRulesSablon(){
+		$prs_id = $this->getParameter('price_rules_sablon_id');
+		$prs_raw_value = $this->getParameter('price_rules_sablon_raw_value');
+		$campaign_id = $this->getParameter('campaign_id');
+		
+		$response = CampaignManager::getInstance()->savePriceRulesSablon($prs_id, $prs_raw_value, $campaign_id);
+		
+		$this->renderText(json_encode($response));
+	}
+	
+	public function actionloadPriceRulesSablon(){
+		$prs_id = $this->getParameter('price_rules_sablon_id');
+		$prs_raw_value = $this->getParameter('price_rules_sablon_raw_value');
+		$campaign_id = $this->getParameter('campaign_id');
+	
+		$response = CampaignManager::getInstance()->loadPriceRulesSablon($prs_id, $prs_raw_value, $campaign_id);
+	
+		$this->renderText(json_encode($response));
 	}
 	// Uncomment the following methods and override them if needed
 	/*

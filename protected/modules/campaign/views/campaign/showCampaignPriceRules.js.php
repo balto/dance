@@ -9,6 +9,7 @@ $dlg = new ExtDialog($this, array(
     'layout' => 'anchor',
 ));
 
+$csrf_token = $form->generateCsrfToken();
 
 // functions, event handlers (declarations) ________________
 $dlg->onDatachanged(Ext::fn("this.stores.get('TreeStore').load();"));
@@ -18,6 +19,9 @@ $dlg->createMethod("addGeneralRecord()");
 
 $dlg->createMethod("editRecord()");
 $dlg->createMethod("deleteRecord()");
+
+$dlg->createMethod("loadPriceRulesSablon()");
+$dlg->createMethod("savePriceRulesSablon()");
 
 /*
 $dlg->createMethod("addPermissionRecord(btn, pressed)", "this.showPermissionSelect()");
@@ -38,6 +42,19 @@ $dlg->createStore("TreeStore","TreeStore")
 	)
 ;
 
+
+$dlg->createModel("Basic", $this->getBasicSelectFieldDefinitions());
+
+
+$dlg->createStore("PriceRulesSablonComboStore")
+->model($dlg->model('Basic'))
+->autoLoad(false)
+->remoteSort(false)
+->pageSize($combo_max_per_page) // nem lehet megadni, hogy ne küldje a store a page paramétereket
+->proxy(Ext::Proxy()->url('getPriceRulesSablonList', $this)
+		->reader(Ext::JsonReader())
+		//->extraParams(array('isCombo' => 1))
+);
 // view  __________________________________________________
 
 $dlg->window->width(650)->height(450);
@@ -91,6 +108,43 @@ $dlg->add(Ext::TreePanel('CampaignTreePanel')
 		
 	))
 	->height(390)
+	->fbar(Ext::Form('PriceRulesSablonForm')
+		->border(false)
+		->defaults(array("labelWidth" => 170, "anchor" => "100%"))
+		->bodyPadding(5)
+		->add(
+			Ext::Hidden($form->generateName('csrf_token'))
+			->value($csrf_token)
+		)
+		->add(
+	    	Ext::Hidden($form->generateName('id'))
+	    	->value('')
+	    )
+		->add(Ext::Container("PriceRulesSablonContainer")
+			->layout(array(
+				'type' => 'hbox',
+			))
+			->add(
+				Ext::ComboBox($form->generateName('name'))
+				->store($dlg->store("PriceRulesSablonComboStore"))
+				->fieldLabel($form->getLabel('name'))
+				->displayField('name')
+				->valueField('id')
+				->allowBlank(false)
+			)
+			->add(Ext::Button("ButtonLoadPriceRulesSablon")
+				->iconCls('icon-arrow-up')
+				->text(Yii::t('msg', 'Betöltés'))
+				->handler($dlg->loadPriceRulesSablon)
+			)
+			->add(Ext::Button("ButtonSavePriceRulesSablon")
+				->iconCls('icon-save')
+				->text(Yii::t('msg', 'Mentés'))
+				->handler($dlg->savePriceRulesSablon)
+			)
+		)
+		
+	)
 	->bbar(Ext::Toolbar()
         ->add(Ext::Button("ButtonNewUserRecord")
             ->iconCls('icon-add')
@@ -115,6 +169,7 @@ $dlg->add(Ext::TreePanel('CampaignTreePanel')
 	        ->handler($dlg->deleteRecord))
 	)
 	);
+
 
 
 // function implementation ________________________________
@@ -218,6 +273,68 @@ $dlg->deleteRecord->begin() //(grid, record, action, row, col) ?>
 	    }, this);
 	}*/
 <?php $dlg->deleteRecord->end();
+
+$dlg->loadPriceRulesSablon->begin() //(grid, record, action, row, col) ?>
+	var me = this;
+	var campaignId = <?php echo $campaignId; ?>;
+	var priceRulesSablonField = Ext.getCmp('<?php echo Ext::w($form->generateName('name'))->id; ?>');
+
+	Ext.Ajax.request({
+		url: '<?php  echo ExtProxy::createUrl("loadPriceRulesSablon", $this) ?>',
+		method: 'POST',
+		params: {
+			price_rules_sablon_id: priceRulesSablonField.getValue(),
+			price_rules_sablon_raw_value: priceRulesSablonField.rawValue,
+			campaign_id: campaignId
+		},
+		success: function(r) {
+			var response = Ext.decode(r.responseText);
+			var error = response.error;
+			if (error==0) {
+				me.stores.get('TreeStore').load();
+				Ext.Msg.alert('Info', response.message);
+			} else {
+				var errors = '<br /><br />';
+				Ext.each(response.errors, function(error){
+					errors += error+'<br />';
+				});
+				Ext.Msg.alert('Hiba!', response.message +errors);
+			}						
+		},
+		failure: theApp.handleFailure
+	});
+	
+<?php $dlg->loadPriceRulesSablon->end();
+
+$dlg->savePriceRulesSablon->begin() //(grid, record, action, row, col) ?>
+	var campaignId = <?php echo $campaignId; ?>;
+	var priceRulesSablonField = Ext.getCmp('<?php echo Ext::w($form->generateName('name'))->id; ?>');
+
+	Ext.Ajax.request({
+		url: '<?php  echo ExtProxy::createUrl("savePriceRulesSablon", $this) ?>',
+		method: 'POST',
+		params: {
+			price_rules_sablon_id: priceRulesSablonField.getValue(),
+			price_rules_sablon_raw_value: priceRulesSablonField.rawValue,
+			campaign_id: campaignId
+		},
+		success: function(r) {
+			var response = Ext.decode(r.responseText);
+			var error = response.error;
+			if (error==0) {
+				Ext.Msg.alert('Info', response.message);
+			} else {
+				var errors = '<br /><br />';
+				Ext.each(response.errors, function(error){
+					errors += error+'<br />';
+				});
+				Ext.Msg.alert('Hiba!', response.message +errors);
+			}						
+		},
+		failure: theApp.handleFailure
+	});
+	
+<?php $dlg->savePriceRulesSablon->end();
 
 // template methods _______________________________________
 

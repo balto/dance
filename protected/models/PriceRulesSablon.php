@@ -42,7 +42,7 @@ class PriceRulesSablon extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, created_by, created_at', 'required'),
+			array('name', 'required'),
 			array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('updated_at', 'safe'),

@@ -1555,6 +1555,115 @@ class CampaignManager extends BaseModelManager
 		
 		return ($result['totalCount'] > 0) ? true : false ;
 	}
+	
+	public function getPriceRulesSablonList(){
+		$query_params = array(
+			array('select', 'id, name'),
+			array('from', PriceRulesSablon::model()->tableName()),
+		);
+		
+		$result = DBManager::getInstance()->query($query_params);
+		
+		return $result;
+	}
+	
+	public function savePriceRulesSablon($prs_id, $prs_raw_value, $campaign_id){
+		//print_r(func_get_args()); exit;
+		$end_message = '';
+		
+		if($prs_id == $prs_raw_value){
+			if(PriceRulesSablon::model()->count('name=:name', array(':name' => $prs_raw_value))){
+				return array(
+					'success'=>false,
+					'error' => 1,
+					'message'=>Yii::t('msg' ,'Ezzel a névvel már létezik szabály!'),
+					'errors'=>array()
+				);
+			}
+			
+			$prs = new PriceRulesSablon();
+			$prs->name = $prs_raw_value;
+			if($prs->save()){
+				$price_rules_sablon_id = $prs->id;
+				$end_message = 'Az új szabály létrehozása sikeres!';
+			}
+			else{
+				return array(
+	    			'success'=>false,
+	    			'error' => 1,
+	    			'message'=>Yii::t('msg' ,'Az új szabály létrehozása sikertelen!'),
+	    			'errors'=>array()
+		    	);
+			}
+		}
+		else{
+			PriceRulesSablonDetail::model()->deleteAll('price_rules_sablon_id=:prsid', array(':prsid' => $prs_id));
+			$price_rules_sablon_id = $prs_id;
+			$end_message = 'A szabály mentése sikeres!';
+		}
+		
+		$sql = "INSERT INTO price_rules_sablon_detail (campaign_id, lft, rgt, level, name, price, percent,link_id,link_type,price_type,price_rules_sablon_id)
+				  SELECT campaign_id, lft, rgt, level, name, price, percent,link_id,link_type,price_type,".$price_rules_sablon_id."
+				  FROM campaign_price_rules 
+			      WHERE campaign_id =". $campaign_id;
+		
+		if(!Yii::app()->db->createCommand($sql)->execute()){
+			return array(
+				'success'=>false,
+				'error' => 1,
+				'message'=>Yii::t('msg' ,'Az új szabály létrehozása sikertelen!'),
+				'errors'=>array()
+			);
+		}
+		else{
+			return array(
+				'success'=>true,
+				'error' => 0,
+				'message'=>$end_message,
+				'errors'=>array()
+			);
+		}
+	}
+	
+	public function loadPriceRulesSablon($prs_id, $prs_raw_value, $campaign_id){
+	
+		if($prs_id == $prs_raw_value){
+			return array(
+				'success'=>false,
+				'error' => 1,
+				'message'=>Yii::t('msg' ,'Válassz sablont a listából!'),
+				'errors'=>array()
+			);
+		}
+		else{
+			CampaignPriceRules::model()->deleteAll('campaign_id=:cid', array(':cid' => $campaign_id));
+			
+			$sql = "INSERT INTO campaign_price_rules (campaign_id, lft, rgt, level, name, price, percent,link_id,link_type,price_type)
+				  SELECT ".$campaign_id.", lft, rgt, level, name, price, percent,link_id,link_type,price_type
+				  FROM price_rules_sablon_detail
+			      WHERE price_rules_sablon_id =". $prs_id;
+			
+			if(!Yii::app()->db->createCommand($sql)->execute()){
+				return array(
+						'success'=>false,
+						'error' => 1,
+						'message'=>Yii::t('msg' ,'A szabály betöltése sikertelen!'),
+						'errors'=>array()
+				);
+			}
+			else{
+				return array(
+						'success'=>true,
+						'error' => 0,
+						'message'=> 'A szabály betöltve!',
+						'errors'=>array()
+				);
+			}
+			
+		}
+	
+		
+	}
 }
 
 ?>
