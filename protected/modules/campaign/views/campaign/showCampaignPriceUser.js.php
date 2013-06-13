@@ -168,7 +168,11 @@ if (this.params.id) {
 	});
 }
 else{
-	Ext.Function.defer(function(f){Ext.getCmp('<?php echo Ext::w($form->generateName('user_id'))->id ?>').reset();}, 400, this);
+	Ext.Function.defer(function(f){
+		Ext.getCmp('<?php echo Ext::w($form->generateName('user_id'))->id ?>').reset();
+		Ext.getCmp('<?php echo Ext::w($form->generateName('price'))->id ?>').reset();
+		Ext.getCmp('<?php echo Ext::w($form->generateName('percent'))->id ?>').reset();
+	}, 400, this);
     me.window.setDisabled(false);
 }
 

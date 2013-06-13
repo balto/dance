@@ -1636,13 +1636,16 @@ class CampaignManager extends BaseModelManager
 			);
 		}
 		else{
+			$cprlft1 = CampaignPriceRules::model()->find('campaign_id=:cid AND lft=1', array(':cid' => $campaign_id));
+			$cprlft1_name = $cprlft1->name;
+			
 			CampaignPriceRules::model()->deleteAll('campaign_id=:cid', array(':cid' => $campaign_id));
 			
 			$sql = "INSERT INTO campaign_price_rules (campaign_id, lft, rgt, level, name, price, percent,link_id,link_type,price_type)
 				  SELECT ".$campaign_id.", lft, rgt, level, name, price, percent,link_id,link_type,price_type
 				  FROM price_rules_sablon_detail
 			      WHERE price_rules_sablon_id =". $prs_id;
-			
+
 			if(!Yii::app()->db->createCommand($sql)->execute()){
 				return array(
 						'success'=>false,
@@ -1652,6 +1655,10 @@ class CampaignManager extends BaseModelManager
 				);
 			}
 			else{
+				$cprlft1new = CampaignPriceRules::model()->find('campaign_id=:cid AND lft=1', array(':cid' => $campaign_id));
+				$cprlft1new->name = $cprlft1_name;
+				$cprlft1new->saveNode();
+				
 				return array(
 						'success'=>true,
 						'error' => 0,
