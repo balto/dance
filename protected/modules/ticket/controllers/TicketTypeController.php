@@ -78,6 +78,29 @@ class TicketTypeController extends Controller
 		);
 		
 		$fields[] = array(
+			'header' => $labels['default_price'],
+			'name' => 'default_price',
+			'mapping' => '',
+			'method' => '',
+			'type' => 'string',
+			'sortType' => '',
+			'sortDir' => '',
+			'dateFormat' => '',
+			'defaultValue' => '',
+			'resizable' => '',
+			'align' => '',
+			'renderer' => '',
+			'groupable' => false,
+			'gridColumn' => true,
+			'flex' => 1,
+			'values' => array(
+			),
+			'filter' => array(array("xtype" => "textfield",
+					'filterName' => "tt.default_price",
+			)),
+		);
+		
+		$fields[] = array(
 			'header' => 'Használható',
 			'name' => 'joined_campaign_types',
 			'mapping' => '',
