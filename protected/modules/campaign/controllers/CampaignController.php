@@ -386,6 +386,7 @@ class CampaignController extends Controller
 		CampaignManager::getInstance()->startPriceRulesForCampaign($campaignId);
 	
 		$form = new PriceRulesSablonForm();
+		$form->bindActiveRecord(PriceRulesSablon::model());
 		
 		$this->render('/campaign/showCampaignPriceRules.js', array(
 				'max_per_page' => $max_per_page,
