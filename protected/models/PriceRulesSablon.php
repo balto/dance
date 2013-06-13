@@ -71,7 +71,7 @@ class PriceRulesSablon extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => Yii::t('msg', 'Sablon'),
 			'created_by' => 'Created By',
 			'created_at' => 'Created At',
 			'updated_by' => 'Updated By',
