@@ -369,7 +369,7 @@ $mdl->attendanceSheetmainContainer->add(
 				->add(
 					Ext::Button("ButtonReset" . $this->nameHelper[2]['name'] . "Record")
 					->iconCls('icon-add')
-					->text(Yii::t('msg', 'Tisztítás'))
+					->text(Yii::t('msg', 'Kiürítés'))
 					->handler($mdl->resetTicketForm)
 				)
 				->add(
