@@ -1437,8 +1437,12 @@ class CampaignManager extends BaseModelManager
 	public function saveCampaignPriceUser(array $data){
 		$parent_id = $data['tree_parent_id'];
 		$edit = false;
+
+		$user = null;
 		
-		$user = User::model()->findByPk($data['user_id']);
+		if(isset($data['user_id']) && $data['user_id']){
+			$user = User::model()->findByPk($data['user_id']);
+		}
 		
 		if($data['id']){
 			$edit = true;
@@ -1455,11 +1459,11 @@ class CampaignManager extends BaseModelManager
 			$priceType = $b->price_type;
 		}
 		
-		$b->name = $user->username;
+		$b->name = (!is_null($user)) ? $user->username .' '. $data['name'] : $data['name'];
 		$b->price = (empty($data['price'])) ? null : $data['price'] ;
 		$b->percent = (empty($data['percent'])) ? null : $data['percent'] ;
-		$b->link_id = $data['user_id'];
-		$b->link_type = 'user';
+		$b->link_id = (!is_null($user)) ? $data['user_id'] : null;
+		$b->link_type = (!is_null($user)) ? 'user' : null;
 		$b->price_type = $priceType;
 		
 		if(!$edit){

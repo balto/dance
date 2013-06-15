@@ -148,14 +148,14 @@ $dlg->add(Ext::TreePanel('CampaignTreePanel')
 	->bbar(Ext::Toolbar()
         ->add(Ext::Button("ButtonNewUserRecord")
             ->iconCls('icon-add')
-            ->text('Új felhasználó')
+            ->text('Új felvétele')
             ->handler($dlg->addUserRecord))
 		
-		->add(Ext::Button("ButtonNewGeneralRecord")
+		/*->add(Ext::Button("ButtonNewGeneralRecord")
             ->iconCls('icon-add')
             ->text('Új általános')
-            ->handler($dlg->addGeneralRecord))
-		
+            ->andler($dlg->addGeneralRecord))
+		*/
 		->add(Ext::ToolbarSeparator())
 		
 		->add(Ext::Button("ButtonEditRecord")
@@ -208,8 +208,10 @@ $dlg->editRecord->begin() //(grid, record, action, row, col) ?>
     var selModel = campaignTreePanel.getSelectionModel();
 	var selected = selModel.getSelection();
     
-    var type = (selected[0].data.link_id == null) ? 'showCampaignPriceGeneral' : 'showCampaignPriceUser' ;
+   // var type = (selected[0].data.link_id == null) ? 'showCampaignPriceGeneral' : 'showCampaignPriceUser' ;
 
+    var type = 'showCampaignPriceUser' ;
+    
 	if(!selected.length){
 		Ext.Msg,alert('Hiba!', 'Válassz egy ágat!');
 	}

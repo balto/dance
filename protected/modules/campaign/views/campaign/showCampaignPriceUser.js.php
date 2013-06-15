@@ -5,7 +5,7 @@
 
 $dlg = new ExtDialog($this, array(
     "cacheable" => true,
-    "title" => 'Felhasználó',
+    "title" => 'Ág szerkesztése',
     'layout' => 'anchor',
 ));
 
@@ -60,17 +60,23 @@ $dlg->CampaignPriceUserForm
 		    	->value('')
 		    )
 			
+		    ->add(Ext::TextField($form->generateName('name'))
+	    		->fieldLabel($form->getLabel('name'))
+	    		->value('')
+	    		->allowBlank(true)
+		    )
+		    
 			->add(
 
-					Ext::ComboBox($form->generateName('user_id'))
-					->store($dlg->store("userComboStore"))
-					->fieldLabel($form->getLabel('user_id'))
-					->displayField('name')
-					->loadingText('loading...')
-					->forceSelection(true)
-					->valueField('id')
-					->allowBlank(false)
-					->flex(1)
+				Ext::ComboBox($form->generateName('user_id'))
+				->store($dlg->store("userComboStore"))
+				->fieldLabel($form->getLabel('user_id'))
+				->displayField('name')
+				->loadingText('loading...')
+				->forceSelection(false)
+				->valueField('id')
+				->allowBlank(true)
+				->flex(1)
 				
 			)
 			
@@ -171,6 +177,7 @@ else{
 	Ext.Function.defer(function(f){
 		Ext.getCmp('<?php echo Ext::w($form->generateName('id'))->id ?>').reset();
 		Ext.getCmp('<?php echo Ext::w($form->generateName('user_id'))->id ?>').reset();
+		Ext.getCmp('<?php echo Ext::w($form->generateName('name'))->id ?>').reset();
 		Ext.getCmp('<?php echo Ext::w($form->generateName('price'))->id ?>').reset();
 		Ext.getCmp('<?php echo Ext::w($form->generateName('percent'))->id ?>').reset();
 	}, 400, this);

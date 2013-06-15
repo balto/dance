@@ -7,6 +7,7 @@ class CampaignPriceUserForm extends EFormModel
 	public $id;
 	public $csrf_token;
 	public $tree_parent_id;
+	public $name;
 	public $user_id;
 	public $price;
 	public $percent;
@@ -23,7 +24,7 @@ class CampaignPriceUserForm extends EFormModel
 	public function rules()
 	{
 		return array(
-			array('user_id, price_type', 'required'),
+			array('price_type', 'required'),
 		);
 	}
 
@@ -34,6 +35,7 @@ class CampaignPriceUserForm extends EFormModel
 	{
 		return array_merge(parent::attributeLabels(),
             array(
+            	'name' => 'Megnevezés',
                 'user_id' => 'Felhasználó',
                 'price'   => 'Összeg',
                 'percent' => 'Százalék',

@@ -436,7 +436,8 @@ class CampaignController extends Controller
 		
 		$isGeneral = is_null($cpr->link_id);
 		
-		$form_name = $isGeneral ? 'CampaignPriceGeneralForm' : 'CampaignPriceUserForm' ;
+		//$form_name = $isGeneral ? 'CampaignPriceGeneralForm' : 'CampaignPriceUserForm' ;
+		$form_name = 'CampaignPriceUserForm' ;
 		
 		$form = new $form_name();
 		
