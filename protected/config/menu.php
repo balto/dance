@@ -17,7 +17,7 @@ return array(
     
 	array(
         'module' => true,
-        'text' => Yii::t('msg', 'Tagok'),
+        'text' => Yii::t('msg', 'Tanítványok'),
         'iconCls' => 'icon-user',
         'url' => 'member/member/index',
     ),
