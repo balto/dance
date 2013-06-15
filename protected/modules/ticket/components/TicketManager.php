@@ -28,6 +28,7 @@ class TicketManager extends BaseModelManager
     		'tt.moment_count',
     		'tt.is_daily',
     		'tt.valid_days',
+    		'tt.default_price',
     		'COALESCE(GROUP_CONCAT(CONCAT(dt.name," ",ct.name,";",CAST(ttct.is_main AS CHAR),";",CAST(ttct.is_free AS CHAR)) SEPARATOR ", "), "...nincs kampány típushoz rendelve") as joined_campaign_types',
     	);
     	
