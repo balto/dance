@@ -176,7 +176,7 @@ if (this.params.id) {
 	});
 
 } else {
-	Ext.Function.defer(function(f){f.getForm().reset();}, 400, this, [form]);
+	Ext.Function.defer(function(f){f.getForm().reset();}, 500, this, [form]);
     me.window.setDisabled(false);
 }
 
