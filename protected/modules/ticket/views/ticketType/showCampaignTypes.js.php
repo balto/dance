@@ -82,14 +82,21 @@ var me = this,
 	var selected = selModel.getSelection();
 
 	var ctForm = Ext.getCmp('<?php echo $dlg->Form->id; ?>');
-	
-	if(ctForm.getForm().isValid()){
 
-	    Ext.each(selected, function(model){
-	    	parentGrid.getStore().add(model);
-	   	});
+	if(parentGrid.getStore().count()==0){
 	
-	   	me.window.close();
+		if(ctForm.getForm().isValid()){
+	
+		    Ext.each(selected, function(model){
+		    	parentGrid.getStore().add(model);
+		   	});
+		
+		   	me.window.close();
+		}
+
+	}
+	else{
+		Ext.Msg.alert('Hiba', 'Már van hozzáadva kapcsolódó típus! <br />Egyszerre csak egy lehet!');
 	}
 
 <?php $dlg->done->end();

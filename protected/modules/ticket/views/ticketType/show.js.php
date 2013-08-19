@@ -56,7 +56,7 @@ $dlg->createStore("GridPermissionStore")
 
 // view  __________________________________________________
 
-$dlg->window->width(500)->height(600);
+$dlg->window->width(500)->height(500);
 $dlg->window->buttons(array(
     Ext::Button()->text('Mentés')->handler($dlg->save),
     Ext::Button()->text('Bezár')->handler(new ExtFunction("this.window.close()"))->scope(new ExtCodeFragment("this")),
@@ -118,19 +118,19 @@ $dlg->add(Ext::GridPanel("Grid")
 		->store($dlg->store("GridStore"))
 		->preventHeader(true)
 		->collapsible(true)
-		->height(200)
-		->title('Új kapcsolódó kampány típus(ok)')
+		->height(100)
+		->title('Új kapcsolódó kampány típus')
 		->iconCls('icon-grid')
-		->bbar(Ext::PagingToolbar()
+		->bbar(Ext::Toolbar()
 			->add(Ext::ToolbarSeparator())
 			->add(Ext::Button("ButtonNewRecord")
 				->iconCls('icon-add')
 				->text('Új kapcsolódó kampány típus')
 				->handler($dlg->addRecord)
 			))
-		->plugins(array(
+		/*->plugins(array(
 			new ExtCodeFragment("Ext.create('Ext.ux.grid.plugin.HeaderFilters', { pluginId: 'gridFilters', enableTooltip : false })")
-		))
+		))*/
 		->autoExpandColumn('name')
 		->rowaction(Ext::RowAction("remove")
 			->iconCls('icon-remove')
@@ -193,22 +193,31 @@ gridPermissionStore.each(function(record){
 	permissionedCampaignTypes.push(dataData);
 });
 
-form.getForm().submit({
-    clientValidation: true,
-    submitEmptyText: false,
-    url: '<?php echo ExtProxy::createUrl('save', $this) ?>',
-    params: {'JoinCampaignTypes[]' : JoinCampaignTypes, 'permissionedCampaignTypes[]' : permissionedCampaignTypes},
-    success: function(form, action) {
-        me.changed = false;
-        me.window.close();
 
-        // ertesites az adatok megvaltozasarol
-        me.parentWindow.fireEvent('datachanged', me.params.id);
-    },
-    failure: theApp.handleFormSubmitFailure,
-    waitTitle: MESSAGES.SAVE_WAIT_TITLE,
-    waitMsg: MESSAGES.SAVE_WAIT_MESSAGE
-});
+if(JoinCampaignTypes.length){
+	
+	form.getForm().submit({
+	    clientValidation: true,
+	    submitEmptyText: false,
+	    url: '<?php echo ExtProxy::createUrl('save', $this) ?>',
+	    params: {'JoinCampaignTypes[]' : JoinCampaignTypes, 'permissionedCampaignTypes[]' : permissionedCampaignTypes},
+	    success: function(form, action) {
+	        me.changed = false;
+	        me.window.close();
+	
+	        // ertesites az adatok megvaltozasarol
+	        me.parentWindow.fireEvent('datachanged', me.params.id);
+	    },
+	    failure: theApp.handleFormSubmitFailure,
+	    waitTitle: MESSAGES.SAVE_WAIT_TITLE,
+	    waitMsg: MESSAGES.SAVE_WAIT_MESSAGE
+	});
+
+}
+else{
+	Ext.Msg.alert('Hiba', 'Kapcsolódó kampánytípus választása kötelező!');
+}
+
 <?php $dlg->save->end();
 
 $dlg->removeRecord->begin() // (grid, record, action, row, col) ?>
