@@ -119,10 +119,10 @@ return array(
 		    'enableParamLogging' => true,
 		),*/
 		'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=vargabal',
+				'connectionString' => 'mysql:host=localhost;dbname=admin_aapro',
 				'emulatePrepare' => true,
-				'username' => 'vargabal',
-				'password' => '20SoniR77012',
+				'username' => 'aadmin',
+				'password' => 'vargabal',
 				'charset' => 'utf8',
 				//'schemaCachingDuration' => 3600,
 				'class' => 'EDbConnection',
