@@ -426,7 +426,9 @@ class CampaignController extends Controller
 			$form->generateName('end_datetime') => $record->end_datetime,	
 		);
 
-		$this->renderText(json_encode(array('success'=>true, 'data'=>$data)));
+		$teachers = CampaignManager::getInstance()->getTeachers($id);
+		
+		$this->renderText(json_encode(array('success'=>true, 'data'=>$data, 'teachers' => $teachers)));
 	}
 	
 	public function actionGetLeafRecordData(){
@@ -475,6 +477,7 @@ class CampaignController extends Controller
 	public function actionSaveCampaign(){
 		$active_from_datetime = $this->getParameter('mdt');
 		$active_to_datetime = $this->getParameter('atdt');
+		$teachers = $this->getParameter('teachers', array());
 	
 		$form = new CampaignForm();
 		$params = $this->getParameter($form->getNameFormat());
@@ -484,6 +487,8 @@ class CampaignController extends Controller
 	
 		$result = CampaignManager::getInstance()->save('Campaign', $params, 'CampaignForm');
 	
+		CampaignManager::getInstance()->handleTeachers($teachers, $result);
+		
 		$this->renderText(json_encode($result));
 	}
 	

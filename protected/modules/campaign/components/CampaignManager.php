@@ -1103,7 +1103,8 @@ class CampaignManager extends BaseModelManager
     	}
     	else{
     		return array(
-    			'success'=>true,
+    			'success'=>false,
+    			//'saved' => false,
     			'message'=>'Nem sikerült felvenni a megadott kampányt! Már létezik ilyen kampány!',
     		);
     	}
@@ -1674,6 +1675,43 @@ class CampaignManager extends BaseModelManager
 		}
 	
 		
+	}
+	
+	private function addTeachers(array $teacherIds, $campaignId){
+		foreach ($teacherIds AS $tid){
+			$t = new CampaignTeachers();
+			$t->campaign_id = $campaignId;
+			$t->user_id = $tid;
+			$t->save();
+		}
+	}
+	
+	private function clearTeachers($campaignId){
+		CampaignTeachers::model()->deleteAll('campaign_id=:campaign_id', array(':campaign_id' => $campaignId));
+	}
+	
+	public function handleTeachers(array $teacherIds, array $campaignResponse){
+		if($campaignResponse['success']){
+			if($campaignResponse['is_edit']){
+				$this->clearTeachers($campaignResponse['id']);
+				$this->addTeachers($teacherIds, $campaignResponse['id']);
+			}
+			else{
+				$this->addTeachers($teacherIds, $campaignResponse['id']);
+			}
+		}
+	}
+	
+	public function getTeachers($campaignId){
+		$query_params = array(
+    		array('select', 'user_id'),
+    		array('from', CampaignTeachers::model()->tableName().' ct'),
+    		array('where', array("ct.campaign_id=:campaign_id", array(':campaign_id' => $campaignId))),
+    	);
+    
+		$result = DBManager::getInstance()->query($query_params);
+		
+		return $result;
 	}
 }
 
