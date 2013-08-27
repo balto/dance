@@ -22,6 +22,7 @@ class DefaultCommand extends CConsoleCommand
     	$ct->datetime = date('Y-m-d H:i:s');
     	$ct->save();
     	
+    	echo 'lefut';
     	
     }
 }
