@@ -281,7 +281,7 @@ public function campaignTypelistFieldDefinitions($show_is_free = false, $is_free
 	
 	public function actionGetList()
 	{
-		$isCombo = $this->getParameter('isCombo', false, false);
+		$isCombo = $this->getParameter('isCombo', 0, false);
 		
 		$extra_params = array();
 		$this->addPagerParams($extra_params);

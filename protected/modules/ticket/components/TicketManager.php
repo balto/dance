@@ -21,70 +21,10 @@ class TicketManager extends BaseModelManager
      * @param unknown_type $extra_params
      * @param unknown_type $isCombo
      */
-    public function getTicketTypes($extra_params = array(), $isCombo = false)
-    {//,"#",ttct.is_main,"#",ttct.is_free
-    	$selectArray = array(
-    		'tt.id',
-    		'tt.moment_count',
-    		'tt.is_daily',
-    		'tt.valid_days',
-    		'tt.default_price',
-    		'COALESCE(GROUP_CONCAT(CONCAT(dt.name," ",ct.name,";",CAST(ttct.is_main AS CHAR),";",CAST(ttct.is_free AS CHAR)) SEPARATOR ", "), "...nincs kampány típushoz rendelve") as joined_campaign_types',
-    	);
-    	
-    	if ($isCombo) {
-    		$selectArray = array(	
-    			'dt.name' => 'dance_type_name',
-    			'ct.name',
-    		);
-    		
-    		$select = $this->getSelectColumnsForCombo($selectArray, "ct.id");
-    	}
-    	else{
-    		$select = $this->getSelectColumnsForGrid($selectArray);
-    	}
-    	
-        $query_params = array(
-            array('select', $select),
-            array('from', TicketType::model()->tableName().' tt'),
-            array('join', array(TicketTypeCampaignType::model()->tableName().' ttct', 'ttct.ticket_type_id = tt.id')),
-            array('join', array(CampaignType::model()->tableName() . ' ct', 'ttct.campaign_type_id = ct.id')),
-			array('join', array(DanceType::model()->tableName() . ' dt', 'ct.dance_type_id = dt.id')),
-			array('group', 'tt.id'),
-        );
+    public function getTicketTypes($extra_params = array(), $isCombo = 0)
+    {
 
-        $query_params = array_merge($query_params, $extra_params);
-		
-		$results = DBManager::getInstance()->query($query_params);
-
-		foreach($results['data'] AS &$result){
-			$jct_key = 'joined_campaign_types';
-			
-			$joined_types = array();
-			$permissioned_types = array();
-			$temp_jcts = explode(',', $result[$jct_key]);
-			
-			foreach($temp_jcts AS $tct){
-				$tct_temp = explode(';', $tct);
-				$ct_name = $tct_temp[0];
-				$ct_is_main = $tct_temp[1];
-				$ct_is_free = $tct_temp[2];
-				
-				if($ct_is_main){
-					$joined_types[] = $ct_name;
-				}
-				else{
-					$container = $ct_name;
-					if($ct_is_free) $container.=' ingyenes';
-					$permissioned_types[] = $container;
-				}
-			}
-			
-			$result[$jct_key] = implode(', ', $joined_types);
-			$result['permissioned_campaign_types'] = implode(', ', $permissioned_types);
-			
-		}
-
+        $results = TicketApi::getInstance()->getTicketTypes($extra_params, $isCombo);
         return $results;
     }
 	
