@@ -29,6 +29,9 @@ class SiteApi extends ApiAbstract
 
     protected function callApi($service, $datas = array(), $format = self::RESPONSE_FORMAT_JSON, $headers = array())
     {
+        //auth hozzaadasa
+        $datas = array_merge($datas, array('auth_key' => Yii::app()->params['apiAuthKey']));
+
         if (empty($service) && !is_string($service)) {
             throw new ApiException('Ervenytelen service-t akartunk meghivni az Oranum API iranyaba.');
         }
