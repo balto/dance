@@ -1,6 +1,6 @@
 <?php
 
-class SiteApi extends ApiAbstract
+class SiteApi extends ApiCachedAbstract
 {
     /**
      * Singleton peldany.
@@ -27,10 +27,10 @@ class SiteApi extends ApiAbstract
         parent::__construct(self::RESPONSE_FORMAT_JSON);
     }
 
-    protected function callApi($service, $datas = array(), $format = self::RESPONSE_FORMAT_JSON, $headers = array())
+    protected function callApi($service, $data = array(), $cacheTtl = 5)
     {
         //auth hozzaadasa
-        $datas = array_merge($datas, array('auth_key' => Yii::app()->params['apiAuthKey']));
+        $data = array_merge($data, array('auth_key' => Yii::app()->params['apiAuthKey']));
 
         if (empty($service) && !is_string($service)) {
             throw new ApiException('Ervenytelen service-t akartunk meghivni az Oranum API iranyaba.');
@@ -42,11 +42,14 @@ class SiteApi extends ApiAbstract
             throw new ApiException('Ervenytelen service-t akartunk meghivni az API iranyaba: '.$serviceUrl);
         }
 
-        $result = $this->call($serviceUrl, self::METHOD_POST,
-            $datas,
+        $result = $this->call(
+            $serviceUrl,
+            self::METHOD_POST,
+            $data,
             array(),
             array(),
-            $headers
+            false,
+            $cacheTtl
         );
 
         return (!$this->hasError($result) ? $result : false);
